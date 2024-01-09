@@ -52,3 +52,11 @@ export interface Product {
     images?: string;
     metadata?: Stripe.Metadata;
 }
+
+export interface Song {
+    id: string;
+    title: string;
+    author: string;
+    image_path: string;
+    song_path: string;
+}
