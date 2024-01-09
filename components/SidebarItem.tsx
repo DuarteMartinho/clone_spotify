@@ -18,7 +18,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     return (
         <Link
             href={href}
-            className={twMerge(`flex
+            className={twMerge(`
+                flex
                 flex-row
                 h-auto
                 items-center
