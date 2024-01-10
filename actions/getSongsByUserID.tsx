@@ -2,7 +2,6 @@ import { Song } from "@/types";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import toast from "react-hot-toast";
 
 const getSongsByUserID = async (): Promise<Song[]> => {
     const supabaseClient = createServerComponentClient({
@@ -15,7 +14,7 @@ const getSongsByUserID = async (): Promise<Song[]> => {
     } = await supabaseClient.auth.getSession();
 
     if (sessionError) {
-        // toast.error("Something went wrong fetching songs!");
+        console.log("Something went wrong fetching songs!");
         return [];
     }
 
@@ -26,7 +25,7 @@ const getSongsByUserID = async (): Promise<Song[]> => {
         .order("created_at", { ascending: false });
 
     if (error) {
-        toast.error("Something went wrong fetching songs!");
+        console.log("Something went wrong fetching songs!");
         return [];
     }
 

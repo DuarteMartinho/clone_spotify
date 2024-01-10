@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import useGetSongById from "@/hooks/useGetSongById";
 import useLoadSong from "@/hooks/useLoadSong";
 import usePlayer from "@/hooks/usePlayer";
@@ -7,6 +9,7 @@ import PlayerContent from "./PlayerContent";
 
 const Player = ({ }) => {
     const player = usePlayer();
+    const [volume, setVolume] = useState(0.5);
     const { song } = useGetSongById(player.activeId);
 
     const songUrl = useLoadSong(song!);
@@ -23,6 +26,8 @@ const Player = ({ }) => {
                 key={songUrl}
                 song={song}
                 songUrl={songUrl}
+                volume={volume}
+                setVolume={setVolume}
             />
         </div>
     );

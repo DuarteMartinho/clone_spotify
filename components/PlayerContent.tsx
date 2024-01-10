@@ -15,14 +15,17 @@ import usePlayer from "@/hooks/usePlayer";
 interface PlayerContentProps {
     song: Song;
     songUrl: string;
+    volume: number;
+    setVolume: (value: number) => void;
 }
 
 const PlayerContent: React.FC<PlayerContentProps> = ({
+    volume,
+    setVolume,
     song,
     songUrl,
 }) => {
     const player = usePlayer();
-    const [volume, setVolume] = useState(1);
     const [isPlaying, setIsPlaying] = useState(false);
     const Icon = isPlaying ? BsPauseFill : BsPlayFill;
     const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;

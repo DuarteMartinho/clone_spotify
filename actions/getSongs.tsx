@@ -2,7 +2,6 @@ import { Song } from "@/types";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import toast from "react-hot-toast";
 
 const getSongs = async (): Promise<Song[]> => {
     const supabaseClient = createServerComponentClient({
@@ -15,7 +14,7 @@ const getSongs = async (): Promise<Song[]> => {
         .order("created_at", { ascending: false });
 
     if (error) {
-        toast.error("Something went wrong fetching songs!");
+        console.log("Something went wrong fetching songs!");
         return [];
     }
 
