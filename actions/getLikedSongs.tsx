@@ -3,31 +3,22 @@ import { Song } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import toast from "react-hot-toast";
-import getSongs from "./getSongs";
 
-const getSongsByTitle = async (title: string): Promise<Song[]> => {
+const getLikedSongs = async (): Promise<Song[]> => {
     const supabaseClient = createServerComponentClient({
         cookies: cookies,
     });
 
-    if (!title) {
-        const allSongs = await getSongs();
-        return allSongs;
-    }
-
     const {
-        data: sessionData,
-        error: sessionError
+        data: {
+            session
+        }
     } = await supabaseClient.auth.getSession();
 
-    if (sessionError) {
-        return [];
-    }
-
     const { data: songs, error } = await supabaseClient
-        .from("songs")
-        .select("*")
-        .ilike("title", `%${title}%`)
+        .from("liked_songs")
+        .select("*, songs(*)")
+        .eq("user_id", session?.user.id)
         .order("created_at", { ascending: false });
 
     if (error) {
@@ -35,7 +26,13 @@ const getSongsByTitle = async (title: string): Promise<Song[]> => {
         return [];
     }
 
-    return songs;
+    if (!songs) {
+        return [];
+    }
+
+    return songs.map((item) => ({
+        ...item.songs,
+    }));
 }
 
-export default getSongsByTitle;
+export default getLikedSongs;
