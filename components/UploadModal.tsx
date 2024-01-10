@@ -40,7 +40,7 @@ const UploadModal = () => {
             onClose();
             reset();
         }
-    }, [session, router, onClose]);
+    }, [session, router, onClose, reset]);
 
     const onChange = (open: boolean) => {
         if (!open) {

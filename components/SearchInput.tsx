@@ -28,7 +28,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         });
 
         router.push(url);
-    }, [debouncedValue]);
+    }, [debouncedValue, router]);
 
     useEffect(() => {
         setValue(searchParam || "");

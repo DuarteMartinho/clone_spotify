@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
-import useSound from "use-sound";
+import useSound from 'use-sound';
 
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
