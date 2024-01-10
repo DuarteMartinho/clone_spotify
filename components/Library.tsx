@@ -9,6 +9,8 @@ import useUploadModal from "@/hooks/useUploadModal";
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
 import useOnPlay from "@/hooks/useOnPlay";
+import toast from "react-hot-toast";
+import useSubscribeModal from "@/hooks/useSubscribeModal";
 
 interface LibraryProps {
     songs: Song[];
@@ -18,12 +20,19 @@ const Library: React.FC<LibraryProps> = ({
     songs
 }) => {
     const authModal = useAuthModal();
+    const subscriptionModal = useSubscribeModal();
     const uploadModal = useUploadModal();
-    const { user } = useUser();
+    const { user, subscription } = useUser();
     const onPlay = useOnPlay(songs);
 
     const onClick = () => {
         if (!user) return authModal.onOpen();
+
+        if (!subscription) {
+            subscriptionModal.onOpen();
+            return toast.error('You must be subscribed to upload songs!');
+        }
+
         return uploadModal.onOpen();
     };
 

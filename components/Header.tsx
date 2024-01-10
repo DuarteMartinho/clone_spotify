@@ -12,6 +12,7 @@ import { FaUserAlt } from "react-icons/fa";
 import Button from "./Button";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
+import usePlayer from "@/hooks/usePlayer";
 
 interface HeaderProps {
     children: React.ReactNode;
@@ -19,6 +20,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ children, className }) => {
+    const player = usePlayer();
     const { onOpen } = useAuthModal();
     const router = useRouter();
 
@@ -33,6 +35,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             toast.success("Logged out successfully!");
         }
 
+        player.reset();
         router.refresh();
     };
 
@@ -92,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                             </Button>
                             <Button
                                 className="bg-white"
-                                onClick={() => router.push("/profile")}
+                                onClick={() => router.push("/account")}
                             >
                                 <FaUserAlt size={20} />
                             </Button>

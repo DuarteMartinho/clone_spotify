@@ -106,7 +106,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                 >
                     <MediaItem
                         song={song}
-                        onClick={handlePlay}
+                    // onClick={handlePlay}
                     />
                     <LikeButton
                         songID={song.id}
