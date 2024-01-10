@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spotify Clone
 
-## Getting Started
+## Description
 
-First, run the development server:
+A Spotify clone built with Next.js, Tailwind CSS, Supabase, and Stripe.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js
+- Tailwind CSS
+- Supabase
+- Stripe
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 10/01/2024
 
-## Learn More
+- [x] Loading Animations
+- [x] Responsive Design
+- [x] Dark Mode
+- [x] View Songs
+- [x] Login
+- [x] Like Songs
+- [x] View Liked Songs
+- [x] Search Songs
+- [x] Play Songs
+- [x] View Account - Manage Subscription
+- [x] Upload Songs (Premium)
 
-To learn more about Next.js, take a look at the following resources:
+## Some Possible Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [ ] Create Playlists
+- [ ] View Playlists
+- [ ] View Artists
+- [ ] View Albums
+- [ ] View Recently Played
+- [ ] View Queue
+- [ ] View History
+- [ ] Improve Player UI
+- [ ] Improve Search UI
+- [ ] Improve Account UI
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Screenshots
 
-## Deploy on Vercel
+![Login](./screenshots/login.png)
+![Home](./screenshots/home.png)
+![Search](./screenshots/search.png)
+![Account](./screenshots/account.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Important commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Supabase commands
+
+- npx supabase login
+- npx supabase gen types typescript --project-id $PROD_ID --schema public > types_db.ts
+
+### Stripe commands
+
+- stripe login
+- stripe listen --forward-to localhost:3000/api/webhooks
+
+Sample trigger: stripe trigger payment_intent.succeeded
+
+## How to run
+
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm run dev`
+4. Run stripe command above
+
+Note: Completed by following a tutorial

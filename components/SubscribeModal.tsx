@@ -38,13 +38,6 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({
     const { user, isLoading, subscription } = useUser();
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
 
-    // useEffect(() => {
-    //     if (session) {
-    //         router.refresh();
-    //         onClose();
-    //     }
-    // }, [session, router, onClose]);
-
     const onChange = (open: boolean) => {
         if (!open) {
             onClose();
@@ -134,7 +127,7 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({
             isOpen={isOpen}
             onChange={onChange}
             title="Only for premium users"
-            description="Listen to music without ads and offline."
+            description="Subscribe to get access to all features"
         >
             {content}
         </Modal>
